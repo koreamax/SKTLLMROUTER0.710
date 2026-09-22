@@ -108,9 +108,9 @@ re-run inside each one, over three scenarios:
 ```mermaid
 flowchart LR
     P["prompt text<br/>only"] --> H["hashed<br/>linear heads"]
-    H --> F["family classifier<br/>+ kNN"]
-    F --> G["meta GBM<br/>~4,800 trees"]
-    G --> B["prior-lookup blend<br/>w = 0.25 on scored hits"]
+    H --> F["family classifier and kNN"]
+    F --> G["meta GBM<br/>about 4800 trees"]
+    G --> B["prior-lookup blend<br/>weight 0.25 on scored hits"]
     B --> A{"Lagrangian<br/>allocation"}
 
     A --> L["ax31-light"]
