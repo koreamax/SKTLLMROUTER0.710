@@ -107,18 +107,14 @@ re-run inside each one, over three scenarios:
 
 ```mermaid
 flowchart LR
-    P["prompt text<br/>only"] --> H["hashed<br/>linear heads"]
-    H --> F["family classifier and kNN"]
-    F --> G["meta GBM<br/>about 4800 trees"]
-    G --> B["prior-lookup blend<br/>weight 0.25 on scored hits"]
-    B --> A{"Lagrangian<br/>allocation"}
-
-    A --> L["ax31-light"]
-    A --> M["ax31"]
-    A --> K["axk1-think"]
-
-    style A fill:#fff3cd,stroke:#d39e00,stroke-width:2px
-    style B fill:#ddf4ff,stroke:#1f6feb
+    prompt["프롬프트 텍스트만"] --> heads["해시 선형 헤드"]
+    heads --> fam["패밀리 분류기 · kNN"]
+    fam --> gbm["메타 GBM"]
+    gbm --> blend["prior-lookup 블렌드"]
+    blend --> alloc["라그랑주 배분"]
+    alloc --> light["ax31-light"]
+    alloc --> mid["ax31"]
+    alloc --> think["axk1-think"]
 ```
 
 Every stage is stdlib. The blend is one sha256 plus a dict probe; on a lookup miss it is a no-op.
